@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show Message</title>
+</head>
+<body>
+
+</body>
+<!--<script src="showMessage.js"></script>-->
+<script src="socket.io/socket.io.js"></script>
+<script>
+    var Notify = function () {
+    }
+    //判断是否支持webkitNotifications
+    Notify.prototype.isSupport = function () {
+        return !!window.webkitNotifications;
+    }
+    //声明一个webkitNotifications实例，并且使用show方法触发桌面提示框
+    Notify.prototype.show = function (icon, title, body) {
+        //声明webkitNotifications实例
+        var _notify = window.webkitNotifications.createNotification(icon, title, body);
+
+        _notify.onclick = function(){
+//            alert("用户点击消息提示窗口");
+            window.focus();
+            window.open("http://www.baidu.com");
+//            chrome.tabs.create( {url: "http://www.baidu.com"} );
+//            this.cancel();
+        };
+        _notify.show();
+    }
+
+    var notify = new Notify();
+    var socket = io.connect('http://localhost');
+    socket.on('news', function (data) {
+        console.log(JSON.stringify(data));
+
+        notify.show("", "校园百事通", JSON.stringify(data));
+    });
+</script>
+</html>
