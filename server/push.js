@@ -9,6 +9,7 @@ var app = require('http').createServer(handler)
     , io = require('socket.io').listen(app)
     , fs = require('fs')
     , amqp = require('amqp')
+    ,
     , events = require("events");
 
 //HTTPServer listening on port 80

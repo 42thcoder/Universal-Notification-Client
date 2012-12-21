@@ -3,8 +3,15 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-  , sio = require('socket.io');
+  , fs = require('fs')
+  , sio = require('socket.io')
+  , RedisStore = require('connect-redis')(express)
+  , sessionStore = new RedisStore()
+  , connect = require('connect')
+  , cookieMethod = require('cookie')
+  , settings = require('./settings');
 
+//settings of express
 var app = express();
 
 app.configure(function(){
@@ -15,8 +22,11 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
-  app.use(express.cookieParser('your secret here'));
-  app.use(express.session());
+  app.use(express.cookieParser(settings.cookieSecrect));
+  app.use(express.session({
+    secrect: settings.cookieSecrect,
+    store: sessionStore
+  }));
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
@@ -25,15 +35,40 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/schoolNews', routes.schoolNews);
-app.get('/jobsInfo', routes.jobsInfo);
-app.get('/partTimeJobsInfo', routes.partTimeJobsInfo);
-app.get('/content', routes.content);
-app.get('/users', user.list);
+//route
+routes(app);
 
+//turn on the server and socket.io
 var server = http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
 var io = sio.listen(server);
+//let socket.io read the session.
+io.configure(function() {
+    io.set('authorization', function(data, callback) {
+        if (data.headers.cookie) {
+            var cookie = connect.utils.parseSignedCookies(
+              cookieMethod.parse(decodeURIComponent(data.headers.cookie)), settings.cookieSecrect);
+            console.log('------------ Here is the cookie ' + JSON.stringify(cookie));
+            sessionStore.get(cookie['connect.sid'], function(err, session) {
+                if (err || !session) {
+                  console.log(session);
+                  callback('Error', false);
+                } else {
+                  data.session = session;
+                  callback(null, true);
+                }
+            });
+        } else {
+            callback('No cookie', false);
+        }
+    });
+});
+
+io.sockets.on('connection', function(socket) {
+    var session = socket.handshake.session;
+    console.log("----------------Here is the session " + JSON.stringify(session));
+
+    socket.emit(session, "test");
+});
