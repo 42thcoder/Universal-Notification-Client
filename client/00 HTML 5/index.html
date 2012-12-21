@@ -2,16 +2,20 @@
 <html>
 <head>
     <title>Show Message</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-responsive.min.css">
 </head>
 <body>
 
 </body>
 <!--<script src="http://cdn.socket.io/stable/socket.io.js"></script>-->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 <script src="socket.io/socket.io.js"></script>
 <script>
     var socket = io.connect('http://localhost');
     socket.on('news', function (data) {
-        console.log(JSON.stringify(data));
+        console.log(data);
     });
 </script>
 </html>

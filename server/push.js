@@ -11,7 +11,6 @@ var app = require('http').createServer(handler)
     , amqp = require('amqp')
     , events = require("events");
 
-
 //HTTPServer listening on port 80
 app.listen(8888);
 //RabbitMQ listening on localhost
