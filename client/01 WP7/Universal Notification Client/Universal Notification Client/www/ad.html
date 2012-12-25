@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css" />
+</head>
+<body>
+
+	<!-- nav bar -->
+	<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+          <a class="brand" href="#">校园百事通</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              	<li class="active"><a href="index.html">首页</a></li>
+	            <li><a href="schoolNews.html">校园通知</a></li>
+	            <li><a href="jobsInfo.html">招聘信息</a></li>
+	            <li><a href="partTimeJobsInfo.html">兼职信息</a></li>
+            </ul>
+            <p class="navbar-text pull-right">{{username}}<a href="#">(切换账号)</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+	<!--END nav-->
+
+
+	<!-- alert message -->
+	<div id="alert">
+
+	</div>
+	<!-- END alert message -->
+
+
+	<!-- really body -->
+	<div class="container-fluid">
+
+		<!-- advertisement -->
+	<div class="row-fluid">
+		<ul class="thumbnails">
+        	<!-- <li class="span4"> -->
+        	<li>
+        		<div class="thumbnail">
+                  <img data-src="holder.js/291x105" alt="" src="assets/img/adver/b.jpg" />
+                    <p>祝贺昆明冶金学院的学子找到合适的工作</p>
+                  </div>
+            </li>
+        </ul>
+    </div>
+    <!-- END advertisement -->
+
+    <!-- page nav -->
+
+	<!-- END page nav -->
+
+	<footer>
+		© <a href="http://www.oncoding.in">zYz</a>@2012
+	</footer>
+	</div>
+
+</body>
+<!--模板放在这里-->
+<script type="text/template"  id="tpl-alert-error">
+    <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{message}}
+    </div>
+</script>
+<script type="text/template"  id="tpl-alert-success">
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{message}}
+    </div>
+</script>
+<!-- END template -->
+
+<script type="text/javascript" src="cordova-2.2.0.js"></script>
+<script src="js/lib/jquery.js"></script>
+<script src="js/lib/bootstrap-transition.js"></script>
+<script src="js/lib/bootstrap-collapse.js"></script>
+<script src="js/lib/mustache.js"></script>
+<script src="js/getAd.js"></script>
+<script type="text/javascript">
+    getAd.initialize();
+</script>
+</html>

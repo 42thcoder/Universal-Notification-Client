@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Cute Bar Demo - SpyreStudios</title>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js'></script>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js'></script>
+    <script type='text/javascript' src='js/jquery.dataTables.js'></script>
+
+    <link href="css/jquery.ui.all.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <link href="css/demo_page.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/demo_table_jui.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/demo_table.css" rel="stylesheet" type="text/css" media="all"/>
+
+    <script type='text/javascript'>
+        var currentId = 1;
+        var oTable;
+        $(document).ready(function(){
+            if (typeof(localStorage) == 'undefined' ) {
+                alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+            } else {
+                try {
+                    var currentId = localStorage.getItem("currentId")
+                    if(currentId == null)
+                    {
+                        localStorage.setItem("currentId",1);
+                        currentId = 1;
+                    }
+                    oTable = $('#localDataList').dataTable({
+                        "bJQueryUI": true,
+                        "sPaginationType": "full_numbers"
+                    });
+                    addLocalStorageToTabel();
+                } catch (e) {
+                    if (e == QUOTA_EXCEEDED_ERR) {
+                        alert('Quota exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+                    }
+                }
+            }
+
+        });
+
+        function getStoredObjIdsArray()
+        {
+            var ids = localStorage.getItem("storedObjIds");
+            var idStrArray;
+            if(ids!=null)
+            {
+                idStrArray = ids.split(",");
+            }
+            return idStrArray;
+        }
+        function addLocalStorageToTabel()
+        {
+            oTable.fnClearTable();
+            var ids_Array = getStoredObjIdsArray();
+            if(ids_Array!=null)
+            {
+                for ( var j = 0; j < ids_Array.length; j++) {
+                    var theId = ids_Array[j];
+                    var objStr = localStorage.getItem(theId);
+                    if(objStr != null)
+                    {
+                        var objField = objStr.split("|");
+                        addDataToTable(theId,objField[0],objField[1]);
+                    }
+                }
+            }
+        }
+
+        function addDataToTable(id,name,age)
+        {
+            var deleteStr = '<a href="javascript:void(0)" onclick="deleteObjStr('+id+');">delete</a>';
+            oTable.fnAddData( [
+                id,
+                name,
+                age,
+                deleteStr
+            ] );
+        }
+
+        function deleteObjStr(id)
+        {
+            var objStr = localStorage.getItem(id);
+            if(objStr!=null)
+            {
+                alert(objStr);
+                alert("in");
+                localStorage.removeItem(id);
+                addLocalStorageToTabel();
+            }
+        }
+
+
+
+        function setObjStrTolocalStorage()
+        {
+            var name = $("#nameValue").val();
+            if(name==null || name=='')
+            {
+                alert("please input name value!");
+                return false;
+            }
+            var age  = $("#ageValue").val();
+            if(age==null || age =='')
+            {
+                alert("please input age value!");
+                return false;
+            }
+            if(isNaN(age))
+            {
+                alert("the age value must be int type!");
+                return false;
+            }
+            var id   = localStorage.getItem("currentId");
+            localStorage.setItem(id,name+"|"+age);
+            var ids = localStorage.getItem("storedObjIds");
+            if(ids!=null)
+            {
+                ids+=","+id;
+            }
+            else
+            {
+                ids = id;
+            }
+            localStorage.setItem("storedObjIds",ids);
+
+            addCurrentIdPoint();
+        }
+
+        function addDataToLocalStorage()
+        {
+            setObjStrTolocalStorage();
+            addLocalStorageToTabel();
+            $("#addDataToForm").dialog("close")
+        }
+
+        function addCurrentIdPoint()
+        {
+            var currentId = localStorage.getItem("currentId");
+            var currentIdInt = parseInt(currentId) + 1;
+            localStorage.setItem("currentId",currentIdInt);
+        }
+
+        function addDataReady()
+        {
+            var id   = localStorage.getItem("currentId");
+            $("#currentIdLabel").html("Current ID: "+id);
+            var target = $("#addDataToForm")
+            setDisplayArea(target)
+            $(target).dialog("open");
+        }
+
+        function setDisplayArea(target, recall) {
+            $(target).dialog({
+                autoOpen : false,
+                width : "auto",
+                height : "auto",
+                modal : true,
+                position : "center",
+                beforeClose : recall
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<a href="javascript:void(0)" onclick="addDataReady()">You can add Data Here!</a>
+<div id="addDataToForm" style="display:none;">
+    <span id="currentIdLabel">ID:</span>&nbsp;<span>Name:<input type="text" id="nameValue"></span>&nbsp;<span>Age: <input type="text" id="ageValue"></span>&nbsp;<span><a href="javascript:void(0)" onclick="addDataToLocalStorage();">ADD</a></span>
+</div>
+<table id="localDataList" style="border:1px solid; width:100%;">
+    <thead>
+    <tr id="head">
+        <td width="20%">ID</td><td width="20%">Name</td><td width="20%">Age</td><td width="40%">Operation</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>ID</td><td>Name</td><td>Age</td><td>Operation</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+
+</html>

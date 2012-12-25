@@ -1,0 +1,17 @@
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\ApplicationIcon.png
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\Background.png
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\Universal Notification Client.dll
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\Universal Notification Client.pdb
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\AppManifest.xaml
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\Bin\Debug\Universal_Notification_Client.xap
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\App.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\cordovalib\CordovaView.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\cordovalib\UI\AudioRecorder.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\cordovalib\UI\ImageCapture.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\cordovalib\UI\NotificationBox.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\cordovalib\UI\VideoRecorder.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\MainPage.g.i.cs
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\Universal Notification Client.g.resources
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\Universal Notification Client.dll
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\Universal Notification Client.pdb
+d:\users\zyz\documents\visual studio 2010\Projects\Universal Notification Client\Universal Notification Client\obj\Debug\XapCacheFile.xml

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is auto-generated, do not edit! -jm -->
+<CordovaSourceDictionary>
+    <FilePath Value="www\content.html"/>
+    <FilePath Value="www\cordova-2.2.0.js"/>
+    <FilePath Value="www\css\bootstrap-responsive.css"/>
+    <FilePath Value="www\css\bootstrap.css"/>
+    <FilePath Value="www\example.html"/>
+    <FilePath Value="www\js\lib\bootstrap-affix.js"/>
+    <FilePath Value="www\js\lib\bootstrap-alert.js"/>
+    <FilePath Value="www\js\lib\bootstrap-button.js"/>
+    <FilePath Value="www\js\lib\bootstrap-carousel.js"/>
+    <FilePath Value="www\js\lib\bootstrap-dropdown.js"/>
+    <FilePath Value="www\js\lib\bootstrap-modal.js"/>
+    <FilePath Value="www\js\lib\bootstrap-popover.js"/>
+    <FilePath Value="www\js\lib\bootstrap-scrollspy.js"/>
+    <FilePath Value="www\js\lib\bootstrap-tab.js"/>
+    <FilePath Value="www\js\lib\bootstrap-tooltip.js"/>
+    <FilePath Value="www\js\lib\bootstrap-transition.js"/>
+    <FilePath Value="www\js\lib\bootstrap-typeahead.js"/>
+    <FilePath Value="www\js\lib\jquery.js"/>
+    <FilePath Value="www\test.html"/>
+    <FilePath Value="www\img\logo.png"/>
+    <FilePath Value="www\ad.html"/>
+    <FilePath Value="www\jobsInfo.html"/>
+    <FilePath Value="www\js\lib\bootstrap-collapse.js"/>
+    <FilePath Value="www\js\getNewsContent.js"/>
+    <FilePath Value="www\js\getSchoolNews.js"/>
+    <FilePath Value="www\js\getAd.js"/>
+    <FilePath Value="www\js\login.js"/>
+    <FilePath Value="www\js\lib\mustache.js"/>
+    <FilePath Value="www\partTimeJobsInfo.html"/>
+    <FilePath Value="www\schoolNews.html"/>
+    <FilePath Value="www\index.html"/>
+</CordovaSourceDictionary>
